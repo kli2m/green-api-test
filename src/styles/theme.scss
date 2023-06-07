@@ -1,0 +1,91 @@
+/* Colors */
+
+$light-color: #ffffff;
+$text-color: #304153;
+$primary-color: #007ea8;
+$secondary-color: #cdcbd0;
+$tertiary-color: #f3f3f3;
+$quaternary-color: #3499dc;
+
+/* Sizes*/
+
+$media-phone-min: 320px;
+$media-phone-max: 479px;
+$media-tablet-min: 480px;
+$media-tablet-max: 767px;
+$media-laptop-min: 768px;
+$media-laptop-middle-min: 899px;
+$media-laptop-middle-max: 900px;
+$media-laptop-max: 1023px;
+$media-pc-min: 1024px;
+$media-pc-max: 1224px;
+$app-width: 1100px;
+$progress-outside-circle-less-480: 100px;
+$progress-outside-circle-half-less-480: calc($progress-outside-circle-less-480/2);
+$progress-thickness-less-480: 25px;
+$progress-inside-circle-less-480: calc( $progress-outside-circle-less-480 - ($progress-thickness-less-480));
+$progress-outside-circle-less-768: 130px;
+$progress-outside-circle-half-less-768: calc($progress-outside-circle-less-768/2);
+$progress-thickness-less-768: 25px;
+$progress-inside-circle-less-768: calc( $progress-outside-circle-less-768 - ($progress-thickness-less-768));
+$progress-outside-circle: 160px;
+$progress-outside-circle-half: calc($progress-outside-circle/2);
+$progress-thickness: 35px;
+$progress-inside-circle: calc($progress-outside-circle - ($progress-thickness));
+
+/*Font*/
+
+$font-1: 1rem;
+$font-1-3: 1.3rem;
+$font-1-6: 1.6rem;
+$font-2-3: 2.3rem;
+$font-4: 4rem;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-style-normal: normal;
+$font-style-italic: italic;
+$font-style-oblique: oblique;
+$letter-spacing-title: 0.25em;
+$letter-spacing-title-2: 0.15em;
+$letter-spacing-subtitle: 0.05em;
+$line-height-20: 20px;
+
+/* indents */
+
+$indent-3: 3px;
+$indent-5: 5px;
+$indent-10: 10px;
+$indent-20: 20px;
+$indent-25: 25px;
+$indent-40: 40px;
+$indent-50: 50px;
+$indent-65: 65px;
+$indent-70: 70px;
+$indent-80: 80px;
+$indent-two-sides-5-auto: $indent-5 auto;
+$indent-two-sides-10-auto: $indent-10 auto;
+$indent-two-sides-5-0: $indent-5 0;
+$indent-two-sides-10-0: $indent-10 0;
+$indent-two-sides-20-0: $indent-20 0;
+$indent-two-sides-0-5: 0 $indent-5;
+$indent-two-sides-0-10: 0 $indent-10;
+$indent-two-sides-0-20: 0 $indent-20;
+$indent-two-sides-0-40: 0 $indent-40;
+$indent-two-sides-3-10: $indent-3 $indent-10;
+$indent-two-sides-5-0-65: $indent-5 0 $indent-65;
+$indent-two-sides-10-0-65: $indent-10 0 $indent-65;
+$indent-progress-inside-circle: calc(($progress-thickness / 2));
+$indent-progress-inside-circle-less-480: calc(($progress-thickness-less-480 / 2));
+$indent-progress-inside-circle-less-768: calc(($progress-thickness-less-768 / 2));
+
+/* transform */
+
+$parallelogram-deg: 335deg;
+$transform-parallelogram-deg: skew($parallelogram-deg);
+$default-transform-parallelogram-deg: skew(-$parallelogram-deg);
+
+/* borders */
+
+$border-radius-10: 10px;
+$border-radius-circle: 50%;

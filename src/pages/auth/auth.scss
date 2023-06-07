@@ -1,0 +1,40 @@
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  gap: 50px;
+  padding: 16px;
+  justify-content: center;
+  &__title {
+    // margin-top: 180px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #ffffff;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 48px 56px;
+    gap: 32px;
+    background: #ffffff;
+    border-radius: 16px;
+    position: relative;
+    max-width: 528px;
+    min-width: 288px;
+    width: 100%;
+  }
+}
+
+
+
+@media only screen and (max-width: 400px) {
+  .auth-page {
+    &__content {
+      padding: 48px 25px;
+    }
+  }
+}
