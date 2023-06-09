@@ -7,14 +7,14 @@ import { store } from './redux/redux-store';
 import './App.scss';
 
 export const App: React.FC = () => (
-  <React.StrictMode>
-    <Provider store={store}>
-      <HashRouter>
+  <HashRouter basename={process.env.PUBLIC_URL}>
+    <React.StrictMode>
+      <Provider store={store}>
         <Loader />
         <PrivateRoute />
-      </HashRouter>
-    </Provider>
-  </React.StrictMode>
+      </Provider>
+    </React.StrictMode>
+  </HashRouter>
 );
 
 export default App;
