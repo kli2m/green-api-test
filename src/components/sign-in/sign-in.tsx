@@ -8,7 +8,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { RootState } from 'redux/redux-store';
 import { schema } from '../../constants/shema';
-import { fetchAuth } from '../../redux/reducers/auth-reducer';
+import {
+  fetchAuth,
+  getContacts,
+  getUserSettings,
+  setValueRegistration,
+} from '../../redux/reducers/auth-reducer';
 import './sign-in.scss';
 
 type FormData = yup.InferType<typeof schema>;
@@ -25,7 +30,19 @@ export const SignIn: React.FC = (): JSX.Element => {
   } = useForm<FormData>({ resolver: yupResolver(schema) });
 
   const onSubmit = (data: FormData) => {
+    dispatch(
+      setValueRegistration({
+        idInstance: data.idInstance,
+        apiTokenInstance: data.apiTokenInstance,
+      }),
+    );
     dispatch(fetchAuth({ idInstance: data.idInstance, apiTokenInstance: data.apiTokenInstance }));
+    dispatch(
+      getUserSettings({ idInstance: data.idInstance, apiTokenInstance: data.apiTokenInstance }),
+    );
+    dispatch(
+      getContacts({ idInstance: data.idInstance, apiTokenInstance: data.apiTokenInstance }),
+    );
   };
 
   return (

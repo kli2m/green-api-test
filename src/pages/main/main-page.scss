@@ -4,16 +4,106 @@
   display: flex;
   flex-wrap: wrap;
   gap: 21.5px;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 
+  &__wrapper {
+    width: 90%;
+    height: 90%;
+    border: 1px solid gray;
+    display: flex;
+    .contacts {
+      width: 30%;
+      height: 100%;
+      border: 1px solid gray;
+      display: flex;
+      flex-direction: column;
+      &__search {
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        .form {
+          width: 100%;
+          height: 90%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .label {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            input{
+              font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              padding-left: 10px;
+              font-size: 20px;                            
+            }
+          }
+          &__main_label > * {
+            width: 100%;
+            height: 100%;
+          }
+          .submit {
+            height: 100%;
+            width: 30%;
+            margin: 0;
+            border: 2px solid red;
+            box-sizing: content-box;
+            cursor: pointer;
+          }
+        }
+      }
+      &__groups {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
+        .item {
+          width: 100%;
+          height: 50px;
+          cursor: pointer;
+          border-bottom: 1px solid gold;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding-left: 5px;
+          &:hover {
+            background-color: aquamarine;
+          }
+        }
+      }
+    }
+
+    .main-block {
+      width: 70%;
+      height: 100%;
+      border: 1px solid rgb(219, 45, 45);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      &__search {
+        width: 100%;
+        height: 50px;
+        border: 1px solid rgb(12, 12, 240);
+      }
+      &__view-box {
+        width: 100%;
+        flex: 1 1 auto;
+        border: 1px solid rgb(11, 214, 250);
+      }
+    }
+  }
 }
-@media only screen and (min-width:761px) and (max-width:1001px) {
+@media only screen and (min-width: 761px) and (max-width: 1001px) {
   .main-page {
     gap: 16px;
     justify-content: center;
   }
 }
-@media only screen and (max-width:320px) {
+@media only screen and (max-width: 320px) {
   .main-page {
     gap: 16px;
     justify-content: center;
