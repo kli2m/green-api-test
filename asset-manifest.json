@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/green-api-test/static/css/main.bdda44ac.css",
+    "main.js": "/green-api-test/static/js/main.70b50b83.js",
+    "static/media/Alexander.otf": "/green-api-test/static/media/Alexander.736667457860024a6cde.otf",
+    "static/media/Comfortaa-Regular.ttf": "/green-api-test/static/media/Comfortaa-Regular.01e7c808c89b1dd290a8.ttf",
+    "static/media/Typometry_Alternate.ttf": "/green-api-test/static/media/Typometry_Alternate.563bb9b7808b40117c76.ttf",
+    "static/media/Baron_Neue_Bold.otf": "/green-api-test/static/media/Baron_Neue_Bold.29b3f778e8f0344ec81f.otf",
+    "static/media/Zhizn.otf": "/green-api-test/static/media/Zhizn.d6dc30c019cbc4c68676.otf",
+    "static/media/Typometry_Regular.ttf": "/green-api-test/static/media/Typometry_Regular.68f341c560ce1ee43a64.ttf",
+    "index.html": "/green-api-test/index.html",
+    "main.bdda44ac.css.map": "/green-api-test/static/css/main.bdda44ac.css.map",
+    "main.70b50b83.js.map": "/green-api-test/static/js/main.70b50b83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bdda44ac.css",
+    "static/js/main.70b50b83.js"
+  ]
+}
