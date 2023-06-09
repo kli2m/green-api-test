@@ -69,6 +69,9 @@
           justify-content: flex-start;
           align-items: center;
           padding-left: 5px;
+          &.active{
+            background-color: #8bff98;
+          }
           &:hover {
             background-color: aquamarine;
           }
@@ -84,16 +87,26 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
-      &__search {
-        width: 100%;
-        height: 50px;
-        border: 1px solid rgb(12, 12, 240);
+     &__history{
+      width: 100%;
+      height: 80%;
+      border-bottom: 1px solid blue;
+     }
+     &__send{
+      height: 20%;
+      width: 100%;
+      input{
+        width: 80%;
+        height: 100%;
+        box-sizing: border-box;
       }
-      &__view-box {
-        width: 100%;
-        flex: 1 1 auto;
-        border: 1px solid rgb(11, 214, 250);
+      button{
+        width: 20%;
+        height: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
       }
+     }
     }
   }
 }

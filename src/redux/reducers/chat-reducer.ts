@@ -7,7 +7,8 @@ import {
 } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { PostCheckPhone } from 'interfaces/chat-queries';
+import { HistoryMessage, PostCheckPhone } from 'interfaces/chat-queries';
+import { UserContact } from 'interfaces/auth-user';
 import { HOST } from '../../constants/api';
 
 export interface ChatState {
@@ -16,6 +17,10 @@ export interface ChatState {
   statusCode: number | null;
   existsWhatsapp: boolean;
   newContact: string | null;
+  clickedContact: boolean;
+  curContact: UserContact | null;
+  curHistory: HistoryMessage[];
+  textMessage: string;
 }
 
 const initialState: ChatState = {
@@ -24,6 +29,10 @@ const initialState: ChatState = {
   statusCode: null,
   existsWhatsapp: false,
   newContact: null,
+  clickedContact: false,
+  curContact: null,
+  curHistory: [],
+  textMessage: '',
 };
 
 export const checkNumberPhone = createAsyncThunk('chat', async (data: PostCheckPhone) => {
@@ -60,6 +69,42 @@ export const createGroup = createAsyncThunk('createGroup', async (data: any) => 
   return response;
 });
 
+export const getHistory = createAsyncThunk('getHistory', async (data: any) => {
+  let response;
+  try {
+    response = await axios.post(
+      `${HOST}/waInstance${data.idInstance}/getChatHistory/${data.apiTokenInstance}`,
+      {
+        chatId: data.id,
+      },
+    );
+
+    return response;
+  } catch (error: any) {
+    response = error.message;
+  }
+
+  return response;
+});
+
+export const sendMessage = createAsyncThunk('sendMessage', async (data: any) => {
+  let response;
+  try {
+    response = await axios.post(
+      `${HOST}/waInstance${data.idInstance}/sendMessage/${data.apiTokenInstance}`,
+      {
+        chatId: data.id,
+        message: data.text,
+      },
+    );
+    return response;
+  } catch (error: any) {
+    response = error.message;
+  }
+
+  return response;
+});
+
 const chatAdapter = createEntityAdapter();
 
 export const chatSlice = createSlice({
@@ -68,6 +113,13 @@ export const chatSlice = createSlice({
   reducers: {
     setNewContact: (state, action: PayloadAction<string>) => {
       state.newContact = action.payload;
+    },
+    setClickContact: (state, action: PayloadAction<UserContact>) => {
+      state.clickedContact = true;
+      state.curContact = action.payload;
+    },
+    setTypedTextMessage: (state, action: PayloadAction<string>) => {
+      state.textMessage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -120,9 +172,50 @@ export const chatSlice = createSlice({
       .addCase(createGroup.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
+      })
+      .addCase(sendMessage.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(sendMessage.fulfilled, (state, action) => {
+        state.status = 'loading';
+        state.error = null;
+        const tempResponse = action.payload;
+        if (tempResponse.status === 200) {
+          state.error = null;
+        } else if (tempResponse.status === 400) {
+          state.error = new Error('Error');
+        } else {
+          state.error = new Error(tempResponse.error?.message);
+        }
+        state.status = 'idle';
+      })
+      .addCase(sendMessage.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
+      })
+      .addCase(getHistory.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getHistory.fulfilled, (state, action) => {
+        state.status = 'loading';
+        state.error = null;
+        const tempResponse = action.payload;
+        if (tempResponse.status === 200) {
+          state.error = null;
+          state.curHistory = action.payload.data;
+        } else if (tempResponse.status === 400) {
+          state.error = new Error('Error');
+        } else {
+          state.error = new Error(tempResponse.error?.message);
+        }
+        state.status = 'idle';
+      })
+      .addCase(getHistory.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
       });
   },
 });
-export const { setNewContact } = chatSlice.actions;
+export const { setNewContact, setClickContact, setTypedTextMessage } = chatSlice.actions;
 
 export const chatReducer = chatSlice.reducer;
